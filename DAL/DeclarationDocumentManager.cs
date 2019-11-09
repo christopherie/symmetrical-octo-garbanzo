@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Configuration;
 
 namespace ABMDeveloperTest.DAL
 {
-    class DeclarationDocumentManager
+    public abstract class DeclarationDocumentManager
     {
+        public string DeclarationDocumentPath => ConfigurationManager.AppSettings["DeclarationDocumentPath"];
     }
 }

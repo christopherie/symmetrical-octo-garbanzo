@@ -44,8 +44,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\Classes\DeclarationDocumentParser.cs" />
     <Compile Include="BLL\Classes\EdifactMessageParser.cs" />
+    <Compile Include="BLL\Interfaces\IDeclarationDocumentParser.cs" />
     <Compile Include="BLL\Interfaces\IEdifactMessageParser.cs" />
+    <Compile Include="DAL\DeclarationDocumentManager.cs" />
     <Compile Include="DAL\MessageManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

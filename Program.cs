@@ -17,38 +17,54 @@ namespace ABMDeveloperTest
             // Test Exercise 1
             // Please note that Exception handling should be persisted to a Database
             // I have used methods with Exception handling messages output to the console for demo purposes.
-            //EdifactMessageParser edifactMessageParser = new EdifactMessageParser();
-            //string[] message = edifactMessageParser.GetEdifactMessage();
-            //List<string> locSegments = edifactMessageParser.GetLocSegments(message);
-            //List<string> cleanLocSegments = edifactMessageParser.CleanLocSegments(locSegments);
-            //string[] locSegmentElements = edifactMessageParser.GetLocSegmentElements(cleanLocSegments);
+            SetForegroundColor("Exercise 1");
 
-            //try
-            //{
-            //    for (int i = 0; i < locSegmentElements.Length; i++)
-            //    {
-            //        Console.WriteLine($"LOC {i + 1} elements are {locSegmentElements[i]}");
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    Console.WriteLine(ex.Message);
-            //}
+            EdifactMessageParser edifactMessageParser = new EdifactMessageParser();
+            string[] message = edifactMessageParser.GetEdifactMessage();
+            List<string> locSegments = edifactMessageParser.GetLocSegments(message);
+            List<string> cleanLocSegments = edifactMessageParser.CleanLocSegments(locSegments);
+            string[] locSegmentElements = edifactMessageParser.GetLocSegmentElements(cleanLocSegments);
+
+            try
+            {
+                for (int i = 0; i < locSegmentElements.Length; i++)
+                {
+                    Console.WriteLine($"LOC {i + 1} elements are {locSegmentElements[i]}");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            Console.WriteLine();
+            SetForegroundColor("Exercise 2");
 
             // Test Exercise 2
-            string DeclarationDocumentPath = ConfigurationManager.AppSettings["DeclarationDocumentPath"];
-            string nodePattern = "InputDocument/DeclarationList/Declaration/DeclarationHeader/Reference";
-            XmlDocument xmlDocument = new XmlDocument();
-            xmlDocument.Load(DeclarationDocumentPath);
-            XmlNodeList xmlNodeList = xmlDocument.SelectNodes(nodePattern);
-            foreach (var item in from XmlNode item in xmlNodeList
-                                 where item.Attributes["RefCode"].Value == "MWB" || item.Attributes["RefCode"].Value == "TRV" || item.Attributes["RefCode"].Value == "CAR"
-                                 select item)
+            DeclarationDocumentParser declarationDocumentParser = new DeclarationDocumentParser();
+            List<string> choices = new List<string>() { "MWB", "TRV", "CAR" };
+            List<KeyValuePair<string, string>> kvp = declarationDocumentParser.GetRefTextValuesFromRefCodes(choices);
+
+            try
             {
-                Console.WriteLine(item.InnerText);
+                foreach (var t in kvp)
+                {
+                    Console.WriteLine($"RefText value for {t.Key} is {t.Value}");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
 
             Console.ReadKey();
+        }
+
+        private static void SetForegroundColor(string exercise)
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine(exercise);
+            Console.ResetColor();
         }
     }
 }
