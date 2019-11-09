@@ -1,0 +1,6 @@
+C:\Users\Christopher\source\repos\ABMDeveloperTest\bin\Debug\ABMDeveloperTest.exe.config
+C:\Users\Christopher\source\repos\ABMDeveloperTest\bin\Debug\ABMDeveloperTest.exe
+C:\Users\Christopher\source\repos\ABMDeveloperTest\bin\Debug\ABMDeveloperTest.pdb
+C:\Users\Christopher\source\repos\ABMDeveloperTest\obj\Debug\ABMDeveloperTest.csprojAssemblyReference.cache
+C:\Users\Christopher\source\repos\ABMDeveloperTest\obj\Debug\ABMDeveloperTest.exe
+C:\Users\Christopher\source\repos\ABMDeveloperTest\obj\Debug\ABMDeveloperTest.pdb
